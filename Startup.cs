@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
+using SmmEvaApi.Models.User;
 using SmmEvaApi.Models.User.Builders;
 using SmmEvaApi.Services.UserService.Builders;
 using SmmEvaApi.Services.UserService.Editors;
@@ -42,6 +44,7 @@ namespace SmmEvaApi
             services.AddScoped<IUserBuilder, UserBuilder>();
             services.AddScoped<IUserEditor, UserEditor>();
             services.AddScoped<IEditUserBuilder, EditUserBuilder>();
+            services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
